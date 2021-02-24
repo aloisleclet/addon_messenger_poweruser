@@ -69,8 +69,6 @@ const focus = function(element)
   tmp.focus();
   document.body.removeChild(tmp);
 
-  console.log('trying give focus on : '+element);
-
   if (element == 'searchInput')
       search.focus();
   else if (element == 'chatInput')
@@ -85,7 +83,6 @@ const focus = function(element)
       areaSearchResult.focus();
   
   focused = element;
-  console.log('focused: '+focused);
 };
 
 const updateOpened = function()
@@ -99,7 +96,6 @@ const updateOpened = function()
     opened = activeContactsElements[0].style.transform === "translateX(-100%) translateZ(1px)" ? 'activeContactList' : opened;
   else//check if resultList is opened
     opened = document.querySelector('*[role="listbox"]') != null ? 'resultList' : opened; 
-  console.log('opened: '+opened);
 }
 
 //reset tabindex

@@ -11,8 +11,7 @@ A simple firefox addons to be more efficient and avoid the mouse on messenger.
 
 ### easy way @todo
 
-1. go to (https://addons.mozilla.org/fr/firefox/addon/messenger-poweruser/) [https://addons.mozilla.org/fr/firefox/addon/messenger-poweruser/]
-
+1. go to [https://addons.mozilla.org/fr/firefox/addon/messenger-poweruser/](https://addons.mozilla.org/fr/firefox/addon/messenger-poweruser/)
 2. click add to firefox
 
 3. enjoy :)
@@ -20,23 +19,22 @@ A simple firefox addons to be more efficient and avoid the mouse on messenger.
 ### hard way
 
 1. build zip
-
-```
-git clone https://github.com/aloisleclet/addon_messenger_poweruser
-cd ./addon_messenger_poweruser
-zip addon_messenger_poweruser * */*
-```
+    ```
+    git clone https://github.com/aloisleclet/addon_messenger_poweruser
+    cd ./addon_messenger_poweruser
+    zip addon_messenger_poweruser * */*
+    ```
 
 2. go to firefox
-```
-about:debugging#/runtime/this-firefox
-```
+    ```
+    about:debugging#/runtime/this-firefox
+    ```
 
 3. Click on 'Load Temporary addons'
 
-4. select addon_messenger_poweruser.zip 
+5. select addon_messenger_poweruser.zip
 
-5. enjoy :)
+7. enjoy :)
 
 ## How to use
 
@@ -44,16 +42,16 @@ about:debugging#/runtime/this-firefox
 
 2. test keyboard (vim like) shortcuts
 
-* i           ->  focus chat input 
-* /           ->  focus search input
-* Escape      ->  blur all
-* j           ->  scroll bottom (when no input are focused)
-* k           ->  scroll top (when no input are focused)
-* Tab         ->  switch between chat area and contact area (when no input are focused)
-* h or l      ->  switch between chat area and contact area (when no input are focused)
-* o           ->  open information sidebar (when no input are focused)
-* u           ->  send a like or primary emoji (when no input are focused)
-* d           ->  switch dark mode on/off (when no input are focused)
-* a           ->  open active contacts (when no input are focused)
+* <kbd>i</kbd>           ->  focus chat input 
+* <kbd>/</kbd>           ->  focus search input
+* <kbd>Escape</kbd>      ->  blur all
+* <kbd>j</kbd>           ->  scroll bottom (when no input are focused)
+* <kbd>k</kbd>           ->  scroll top (when no input are focused)
+* <kbd>Tab</kbd>         ->  switch between chat area and contact area (when no input are focused)
+* <kbd>h</kbd> or <kbd>l</kbd>      ->  switch between chat area and contact area (when no input are focused)
+* <kbd>o</kbd>           ->  open information sidebar (when no input are focused)
+* <kbd>u</kbd>           ->  send a like or primary emoji (when no input are focused)
+* <kbd>d</kbd>           ->  switch dark mode on/off (when no input are focused)
+* <kbd>a</kbd>           ->  open active contacts (when no input are focused)
 
 #### dev with <3 by @aloisleclet 

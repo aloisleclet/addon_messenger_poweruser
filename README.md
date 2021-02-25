@@ -32,9 +32,9 @@ A simple firefox addons to be more efficient and avoid the mouse on messenger.
 
 3. Click on 'Load Temporary addons'
 
-5. select addon_messenger_poweruser.zip
+4. select addon_messenger_poweruser.zip
 
-7. enjoy :)
+5. enjoy :)
 
 ## How to use
 

@@ -11,7 +11,7 @@ A simple firefox addons to be more efficient and avoid the mouse on messenger.
 
 ### easy way @todo
 
-1. go to [https://addons.mozilla.org/fr/firefox/addon/messenger-poweruser/](https://addons.mozilla.org/fr/firefox/addon/messenger-poweruser/)
+1. go to [https://addons.mozilla.org/addon/messenger-for-poweruser/](https://addons.mozilla.org/addon/messenger-for-poweruser/)
 2. click add to firefox
 
 3. enjoy :)

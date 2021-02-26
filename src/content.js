@@ -105,6 +105,7 @@ const setDarkMode = function(mode)
     document.querySelectorAll('image, img').forEach(function (img) {
       img.style.filter = 'invert(1) hue-rotate(180deg)';
     });
+    document.body.style.backgroundColor="black";
   }
   else
   {
@@ -116,6 +117,7 @@ const setDarkMode = function(mode)
   
   darkmode = mode;
   browser.storage.local.set({'darkmode': mode});
+  document.body.style.backgroundColor="white";
 };
 
 

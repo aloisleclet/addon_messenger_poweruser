@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "addon_messenger_poweruser",
     "author": "aloisleclet",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "messenger for powerusers.",
     "homepage_url": "https://github.com/aloisleclet/addon_messenger_poweruser",
     "icons": {

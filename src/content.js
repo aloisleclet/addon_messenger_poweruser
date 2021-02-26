@@ -11,8 +11,8 @@ let areaChat = document.querySelector('.buofh1pr.j83agx80.eg9m0zos.ni8dbmo4.cbu4
 let areaSearchResult = document.querySelector('ul[role="listbox"]');
 
 let preferencesButton = document.querySelector('.ozuftl9m div[role="button"]');
-let activeContactsButton = document.querySelectorAll('.l9j0dhe7.swg4t2nn div[role="menuitem"]')[1];
-let likeButton = document.querySelectorAll('.kavbgo14 div[role="button"]')[9];
+let activeContactsButton = document.querySelector('.l9j0dhe7.swg4t2nn div[role="menuitem"]:nth-of-type(2)');
+let likeButton = document.querySelector('.j83agx80.l9j0dhe7.aovydwv3.ni8dbmo4.stjgntxs.nred35xi.n8tt0mok.hyh9befq div + span > div[role="button"]');
 let infoButtons = document.querySelectorAll('.bafdgad4.tkr6xdv7 div[role="button"]');
 let infoButton = infoButtons.length == 1 ? infoButtons[0] : infoButtons[2];
 let quitSearchResultButton = document.querySelector('.thwo4zme div[role="button"]');
@@ -28,6 +28,19 @@ let result_index = -1;
 let darkmode = false;
 
 //utils
+
+const sheets = window.document.styleSheets;
+
+if (sheets.length > 0)
+{
+  let sheet = sheets[0];
+
+  sheet.insertRule('html._9dls { overflow:hidden !Important; }', sheet.cssRules.length);
+  sheet.insertRule('body.darkmode { filter: invert(1) hue-rotate(180deg); }', sheet.cssRules.length);
+  sheet.insertRule('body.darkmode { background-color:black; }', sheet.cssRules.length);
+  sheet.insertRule('body.darkmode image { filter: invert(1) hue-rotate(180deg); }', sheet.cssRules.length);
+  sheet.insertRule('body.darkmode img { filter: invert(1) hue-rotate(180deg); }', sheet.cssRules.length);
+}
 
 const resetTabIndex = function()
 {
@@ -51,11 +64,11 @@ const refreshDom = function()
   areaChat = document.querySelector('.buofh1pr.j83agx80.eg9m0zos.ni8dbmo4.cbu4d94t.gok29vw1');
   areaSearchResult = document.querySelector('ul[role="listbox"]');
 
-  preferencesButton = document.querySelectorAll('.j83agx80.pfnyh3mw .ozuftl9m')[0].lastChild;
-  activeContactsButton = document.querySelectorAll('.l9j0dhe7.swg4t2nn div[role="menuitem"]')[1];
+  preferencesButton = document.querySelector('.ozuftl9m div[role="button"]');
+  activeContactsButton = document.querySelector('.l9j0dhe7.swg4t2nn div[role="menuitem"]:nth-of-type(2)');
   infoButtons = document.querySelectorAll('.bafdgad4.tkr6xdv7 div[role="button"]');
-  infoButton = infoButtons.length == 1 ? infoButtons[0] : infoButtons[2];
-  likeButton = document.querySelectorAll('.kavbgo14 div[role="button"]')[9];
+  infoButton = infoButtons.length == 1 ? infoButtons[0] : infoButtons[2]; //@todo risk
+  likeButton = document.querySelector('.j83agx80.l9j0dhe7.aovydwv3.ni8dbmo4.stjgntxs.nred35xi.n8tt0mok.hyh9befq div + span > div[role="button"]');
   quitSearchResultButton = document.querySelector('.thwo4zme div[role="button"]');
   quitActiveContactButton = document.querySelector('.pedkr2u6 div[role="button"]');
 };
@@ -100,24 +113,12 @@ const updateOpened = function()
 const setDarkMode = function(mode)
 {
   if (mode == true)
-  {
-    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-    document.querySelectorAll('image, img').forEach(function (img) {
-      img.style.filter = 'invert(1) hue-rotate(180deg)';
-    });
-    document.body.style.backgroundColor="black";
-  }
+    document.body.classList.add('darkmode');
   else
-  {
-    document.body.style.filter = '';
-    document.querySelectorAll('image, img').forEach(function (img) {
-      img.style.filter = '';
-    });
-  }
+    document.body.classList.remove('darkmode');
   
   darkmode = mode;
   browser.storage.local.set({'darkmode': mode});
-  document.body.style.backgroundColor="white";
 };
 
 
@@ -191,13 +192,31 @@ document.addEventListener('keydown', function (e) {
   else if (e.key == 'a' && focused != 'searchInput' && focused != 'chatInput' && opened != 'activeContactList')
   {
     preferencesButton.click();
-    setTimeout(function () {
+    
+    let menuLoaded = setInterval(function() {
+       
       refreshDom();
-      activeContactsButton.click();
-      focus('activeContactList');
-    }, 400);
+      if (activeContactsButton)
+      {
+          activeContactsButton.click();
+          
+          let listLoaded = setInterval(function()
+          {
+            refreshDom();
+            if (areaActiveContact)
+             {
+                focus('activeContactList');
+                clearInterval(listLoaded);
+             }
+          
+          }, 100); 
+          
+          clearInterval(menuLoaded);
 
-    refreshDom();
+       }
+    
+    }, 100); 
+
     e.preventDefault();
   }
   else if (e.key == 'Escape')
@@ -213,7 +232,6 @@ document.addEventListener('keydown', function (e) {
     {
         quitActiveContactButton.click();
         focus('contactList');
-        //opened = 'contactList';
     }
     else if (opened == 'resultList' && focused == 'searchInput')
     {
@@ -226,9 +244,13 @@ document.addEventListener('keydown', function (e) {
       quitSearchResultButton.click();
       focus('contactList');
     }
+    else if (focused == 'searchInput')
+    {
+      focus('contactList');
+    }
     else
     {
-      //blur all
+      //none
       focus('none');
     }
     

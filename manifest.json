@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "addon_messenger_poweruser",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "messenger for powerusers.",
     "homepage_url": "https://github.com/aloisleclet/addon_messenger_poweruser",
     "icons": {
@@ -9,7 +9,7 @@
         "96": "./icons/icon96.png",
         "128": "./icons/icon128.png",
         "256": "./icons/icon256.png",
-        "500": "./icons/icon500.png"
+        "512": "./icons/icon512.png"
     },
     "browser_action": {
       "default_icon": "./icons/icon96.png",
@@ -19,14 +19,15 @@
     "content_scripts": [
         {
             "matches": [
-              "*://messenger.com/*/*",
-              "*://www.messenger.com/*/*"
+              "https://messenger.com/*/*",
+              "https://www.messenger.com/*/*"
             ],
             "js": ["content.js"]
         }
     ],
     "permissions": [
-        "*://messenger.com/*/*",
-        "*://www.messenger.com/*/*"
+        "storage",
+        "https://messenger.com/*/*",
+        "https://www.messenger.com/*/*"
     ]
 }

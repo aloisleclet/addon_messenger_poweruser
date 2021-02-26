@@ -10,7 +10,7 @@ let areaActiveContact = document.querySelector('.pedkr2u6');
 let areaChat = document.querySelector('.buofh1pr.j83agx80.eg9m0zos.ni8dbmo4.cbu4d94t.gok29vw1');
 let areaSearchResult = document.querySelector('ul[role="listbox"]');
 
-let preferencesButton = document.querySelectorAll('.j83agx80.pfnyh3mw .ozuftl9m')[0].lastChild;
+let preferencesButton = document.querySelector('.ozuftl9m div[role="button"]');
 let activeContactsButton = document.querySelectorAll('.l9j0dhe7.swg4t2nn div[role="menuitem"]')[1];
 let likeButton = document.querySelectorAll('.kavbgo14 div[role="button"]')[9];
 let infoButtons = document.querySelectorAll('.bafdgad4.tkr6xdv7 div[role="button"]');
@@ -20,7 +20,6 @@ let quitActiveContactButton = document.querySelector('.pedkr2u6 div[role="button
 
 let focused = 'chatInput';
 let opened = 'contactList';
-
 
 let contact_index = -1;
 let activeContact_index = -1;
@@ -81,8 +80,9 @@ const focus = function(element)
       areaActiveContact.focus();
   else if (element == 'resultList')
       areaSearchResult.focus();
-  
+ 
   focused = element;
+  console.log(focused);
 };
 
 const updateOpened = function()
@@ -96,12 +96,61 @@ const updateOpened = function()
     opened = activeContactsElements[0].style.transform === "translateX(-100%) translateZ(1px)" ? 'activeContactList' : opened;
   else//check if resultList is opened
     opened = document.querySelector('*[role="listbox"]') != null ? 'resultList' : opened; 
-}
+};
+
+const setDarkMode = function(mode)
+{
+  if (mode == true)
+  {
+    document.body.style.filter = 'invert(1) hue-rotate(180deg)';
+    document.querySelectorAll('image, img').forEach(function (img) {
+      img.style.filter = 'invert(1) hue-rotate(180deg)';
+    });
+  }
+  else
+  {
+    document.body.style.filter = '';
+    document.querySelectorAll('image, img').forEach(function (img) {
+      img.style.filter = '';
+    });
+  }
+  
+  darkmode = mode;
+  browser.storage.local.set({'darkmode': mode});
+};
+
+
 
 //reset tabindex
 resetTabIndex();
 
-//listen to j - k - o - Enter
+//add smooth transition to switch darmode
+document.body.style.transition = 'all ease 0.6s';
+
+
+//wait for image to trigger darkmode
+let loaded = setInterval(function() {
+   console.log(document.querySelectorAll('image, img').length);
+   if (document.querySelectorAll('image, img').length > 1) {
+
+
+      darkmode = browser.storage.local.get(['darkmode']).then(function (res) {
+        if (res.hasOwnProperty('darkmode'))
+        {
+          setDarkMode(res.darkmode);
+        }
+        else
+          setDarkmode(false);
+      
+        return res.darkmode;
+      });
+
+      clearInterval(loaded);
+   }
+
+}, 100); 
+
+//events
 document.addEventListener('keydown', function (e) {
 
   //check what is in the sidebar contacts ? activeContacts ? searchResults ?
@@ -136,26 +185,7 @@ document.addEventListener('keydown', function (e) {
   }
   else if (e.key == 'd' && focused != 'searchInput' && focused != 'chatInput')
   {
-    //switch darkmode
-    if (darkmode == true)
-    {
-      document.body.style.filter = '';
-      document.querySelectorAll('image, img').forEach(function (img) {
-        img.style.filter = '';
-      });
-
-      darkmode = false;
-    }
-    else
-    {
-      document.body.style.filter = 'invert(1) hue-rotate(180deg)';
-      document.querySelectorAll('image, img').forEach(function (img) {
-        img.style.filter = 'invert(1) hue-rotate(180deg)';
-      });
-      
-      darkmode = true;
-    }
-
+    setDarkMode(!darkmode);
     e.preventDefault();
   }
   else if (e.key == 'a' && focused != 'searchInput' && focused != 'chatInput' && opened != 'activeContactList')

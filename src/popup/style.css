@@ -1,0 +1,53 @@
+body
+{
+  background-color:#212436;
+  color:white;
+  border-color:#212436;
+  font-family:arial;
+  width:500px;
+}
+
+h1,h2, h3, h5, h6
+{
+  margin:16px;
+}
+
+h1
+{
+  font-size:16px;
+}
+
+h2
+{
+  font-size:14px;
+}
+
+h3
+{
+  font-size:12px;
+}
+
+li
+{
+  list-style-type: none;
+  white-space:pre-wrap;
+  margin-left:16px;
+}
+
+a, a:link, a:visited
+{
+  color:white;
+  text-decoration:none;
+}
+
+h3  > a
+{
+  text-decoration:underline !important;
+}
+
+.footer
+{
+  display:flex;
+  width:100%;
+  justify-content:space-between;
+}

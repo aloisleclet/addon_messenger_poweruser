@@ -82,7 +82,6 @@ const focus = function(element)
       areaSearchResult.focus();
  
   focused = element;
-  console.log(focused);
 };
 
 const updateOpened = function()
@@ -130,7 +129,6 @@ document.body.style.transition = 'all ease 0.6s';
 
 //wait for image to trigger darkmode
 let loaded = setInterval(function() {
-   console.log(document.querySelectorAll('image, img').length);
    if (document.querySelectorAll('image, img').length > 1) {
 
 

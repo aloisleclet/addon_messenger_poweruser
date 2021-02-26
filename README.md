@@ -1,40 +1,38 @@
-# messenger poweruser
+# Messenger for poweruser
 
-A simple firefox addons to be more efficient and avoid the mouse on messenger.
+<img src="images/icon.png" >
 
-## Features :
+*Experience Messenger with dark mode & vim oriented keyboard shortcuts*
+*Forget your mouse*
 
-* mouse not needeed anymore, keyboard shortcuts (vim oriented) allowed you to use messenger through keyboard only
-* dark mode
+![](https://img.shields.io/amo/users/{8f713cff-eea7-4459-986f-b8366bca7f7a}?color=FF6611&label=Firefox%20users&style=flat-square) 
 
-## How to install
+## Install Extension
 
-### easy way
+|Platform|Link|
+|:-:|:-:|
+|[<img src = "https://i.imgur.com/M6KOVju.png" width="25px">](https://addons.mozilla.org/addon/messenger-for-poweruser/)| [Firefox Extension](https://addons.mozilla.org/addon/messenger-for-poweruser/)|
+## How to use
 
-1. go to [https://addons.mozilla.org/addon/messenger-for-poweruser/](https://addons.mozilla.org/addon/messenger-for-poweruser/)
-2. click add to firefox
+1. login on your messenger account on your browser
 
-3. enjoy :)
+2. test keyboard (vim like) shortcuts
 
-### hard way
+* <kbd>i</kbd>           ->  focus chat input 
+* <kbd>/</kbd>           ->  focus search input
+* <kbd>Escape</kbd>      ->  blur all
+* <kbd>j</kbd>           ->  scroll bottom (when no input are focused)
+* <kbd>k</kbd>           ->  scroll top (when no input are focused)
+* <kbd>Tab</kbd>         ->  switch between chat area and contact area (when no input are focused)
+* <kbd>h</kbd> or <kbd>l</kbd>      ->  switch between chat area and contact area (when no input are focused)
+* <kbd>o</kbd>           ->  open information sidebar (when no input are focused)
+* <kbd>u</kbd>           ->  send a like or primary emoji (when no input are focused)
+* <kbd>d</kbd>           ->  switch dark mode on/off (when no input are focused)
+* <kbd>a</kbd>           ->  open active contacts (when no input are focused)
 
-1. build zip
-    ```
-    git clone https://github.com/aloisleclet/addon_messenger_poweruser
-    cd ./addon_messenger_poweruser
-    zip addon_messenger_poweruser * */*
-    ```
+## ScreenShots
 
-2. go to firefox
-    ```
-    about:debugging#/runtime/this-firefox
-    ```
-
-3. Click on 'Load Temporary addons'
-
-4. select addon_messenger_poweruser.zip
-
-5. enjoy :)
+<img src="images/demo.gif">
 
 ## How to use
 
@@ -54,12 +52,14 @@ A simple firefox addons to be more efficient and avoid the mouse on messenger.
 * <kbd>d</kbd>           ->  switch dark mode on/off (when no input are focused)
 * <kbd>a</kbd>           ->  open active contacts (when no input are focused)
 
+## About Messenger for poweruser
+
+Use messenger without mouse is now possible. And that's great !
+
+Feel free to open issues or pull requests!
+
+## Privacy
+
+This extension **DO NOT** read or save any of your informations. 
+
 #### dev with <3 by @aloisleclet
-
-## Roadmap
-
-* screen shots
-* demo video with showing key down
-* new icon
-* new text ?
-* new readme inspired from materiagram one

@@ -32,7 +32,17 @@
 
 ## ScreenShots
 
-<img src="images/demo.gif">
+### j - k navigation
+<img src="images/demojk.gif">
+
+### i to chat, / to search
+<img src="images/demosearch.gif">
+
+### a to active contact
+<img src="images/demoactivecontact.gif">
+
+### Darkmode
+<img src="images/demodark.gif">
 
 ## How to use
 
